@@ -21,7 +21,7 @@ public class Palindrome
         return true;
         */
         Deque d = this.wordToDeque(word);
-        while(d.size() >= 1)
+        while(d.size() > 1)
         {
             if(d.removeFirst() != d.removeLast()) return false;
         }
