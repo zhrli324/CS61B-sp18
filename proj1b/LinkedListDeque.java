@@ -1,21 +1,17 @@
-public class LinkedListDeque<T> implements Deque<T>
-{
+public class LinkedListDeque<T> implements Deque<T> {
     private int size;
-    public class Node
-    {
+    public class Node {
         private Node prev;
         private T value;
         private Node next;
 
-        public Node(Node p, T v, Node n)
-        {
+        public Node(Node p, T v, Node n) {
             prev = p;
             value = v;
             next = n;
         }
 
-        public Node(Node ppre, Node nnext)
-        {
+        public Node(Node ppre, Node nnext) {
             prev = ppre;
             next = nnext;
         }
@@ -23,43 +19,37 @@ public class LinkedListDeque<T> implements Deque<T>
 
     private Node sentinel;
 
-    public LinkedListDeque()
-    {
+    public LinkedListDeque() {
         sentinel = new Node(null, null);
         sentinel.next = sentinel;
         sentinel.prev = sentinel;
         size = 0;
     }
 
-    public void addFirst(T item)
-    {
+    public void addFirst(T item) {
         Node newNode = new Node(sentinel, item, sentinel.next);
         sentinel.next.prev = newNode;
         sentinel.next = newNode;
         size += 1;
     }
 
-    public void addLast(T item)
-    {
+    public void addLast(T item) {
         Node newNode = new Node(sentinel.prev, item, sentinel);
         sentinel.prev.next = newNode;
         sentinel.prev = newNode;
         size += 1;
     }
 
-    public boolean isEmpty()
-    {
+    public boolean isEmpty() {
         if(size == 0) return true;
         else return false;
     }
 
-    public int size()
-    {
+    public int size() {
         return size;
     }
 
-    public void printDeque()
-    {
+    public void printDeque() {
         Node p = sentinel.next;
         while(p != sentinel)
         {
@@ -68,8 +58,7 @@ public class LinkedListDeque<T> implements Deque<T>
         }
     }
 
-    public T removeFirst()
-    {
+    public T removeFirst() {
         if(size == 0) return null;
         T remove_value = sentinel.next.value;
         sentinel.next = sentinel.next.next;
@@ -78,8 +67,7 @@ public class LinkedListDeque<T> implements Deque<T>
         return remove_value;
     }
 
-    public T removeLast()
-    {
+    public T removeLast() {
         if(size == 0) return null;
         T remove_value = sentinel.prev.value;
         sentinel.prev = sentinel.prev.prev;
@@ -88,8 +76,7 @@ public class LinkedListDeque<T> implements Deque<T>
         return remove_value;
     }
 
-    public T get(int index)
-    {
+    public T get(int index) {
         if(index >= size) return null;
         Node p = sentinel.next;
         for(int i = 0; i < index; i += 1)
@@ -99,14 +86,12 @@ public class LinkedListDeque<T> implements Deque<T>
         return p.value;
     }
 
-    private T getRecursiveHelp(Node start, int index)
-    {
+    private T getRecursiveHelp(Node start, int index) {
         if(index == 0) return start.value;
         else return getRecursiveHelp(start.next, index-1);
     }
 
-    public T getRecursive(int index)
-    {
+    public T getRecursive(int index) {
         if(index >= size) return null;
         return getRecursiveHelp(sentinel.next, index);
     }

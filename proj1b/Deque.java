@@ -1,5 +1,4 @@
-public interface Deque<T>
-{
+public interface Deque<T> {
     void addFirst(T value);
     void addLast(T value);
     boolean isEmpty();
