@@ -32,7 +32,7 @@ public class ArrayDeque<T> {
         T[] newArray = (T[]) new Object[length * 2];
         int oldPtr = front;
         int newPtr = length;
-        while(oldPtr != last) {
+        while (oldPtr != last) {
             newArray[newPtr] = array[oldPtr];
             oldPtr = rightAdd(oldPtr, length);
             newPtr = rightAdd(newPtr, length * 2);
@@ -72,7 +72,7 @@ public class ArrayDeque<T> {
             grow();
         }
         array[last] = item;
-        last = rightAdd(last);
+        last = rightAdd(last, length);
         size++;
     }
 
@@ -88,7 +88,7 @@ public class ArrayDeque<T> {
         int ptr = front;
         while (ptr != last) {
             System.out.print(array[ptr] + " ");
-            ptr = rightAdd(ptr);
+            ptr = rightAdd(ptr, length);
         }
     }
 
@@ -100,7 +100,7 @@ public class ArrayDeque<T> {
             return null;
         }
         T res = array[front];
-        front = rightAdd(front);
+        front = rightAdd(front, length);
         size--;
         return res;
     }
@@ -123,7 +123,7 @@ public class ArrayDeque<T> {
         }
         int ptr = front;
         for (int i = 0; i < index; i++) {
-            ptr = rightAdd(ptr);
+            ptr = rightAdd(ptr, length);
         }
         return array[ptr];
     }
