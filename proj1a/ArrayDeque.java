@@ -13,14 +13,14 @@ public class ArrayDeque<T> {
         last = 4;
     }
 
-    public int leftAdd(int index) {
+    private int leftAdd(int index) {
         if (index == 0) {
             return length - 1;
         }
         return index - 1;
     }
 
-    public int rightAdd(int index, int realLen) {
+    private int rightAdd(int index, int realLen) {
         index %= realLen;
         if (index == realLen - 1) {
             return 0;
@@ -28,7 +28,7 @@ public class ArrayDeque<T> {
         return index + 1;
     }
 
-    public void grow() {
+    private void grow() {
         T[] newArray = (T[]) new Object[length * 2];
         int oldPtr = front;
         int newPtr = length;
@@ -43,7 +43,7 @@ public class ArrayDeque<T> {
         length *= 2;
     }
 
-    public void shrink() {
+    private void shrink() {
         T[] newArray = (T[]) new Object[length / 2];
         int oldPtr = front;
         int newPtr = length / 4;
