@@ -44,12 +44,12 @@ public class TestArrayDequeGold {
                     case 2:
                         num1 = testArrayDeque.removeFirst();
                         num2 = correctArrayDeque.removeFirst();
-                        log = log + "removeFirst(): " + num1 + "\n";
+                        log = log + "removeFirst(" + num1 + ")\n";
                         break;
                     case 3:
                         num1 = testArrayDeque.removeLast();
                         num2 = correctArrayDeque.removeLast();
-                        log = log + "removeLast(): " + num1 + "\n";
+                        log = log + "removeLast(" + num1 + ")\n";
                 }
 
                 assertEquals(log, num1, num2);
